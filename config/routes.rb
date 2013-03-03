@@ -1,10 +1,13 @@
 RubyBlog::Application.routes.draw do
+  root :to  => 'blog_posts#index'
   resources :blog_posts
 
-  root :to  => 'blog_posts#index'
+  get 'sign_up' => 'users#new', :as => 'sign_up'
+  resources :users
 
-  get  'sign_up' => 'users#new'
-  post 'sign_up' => 'users#create'
+  get 'log_in'  => 'sessions#new', :as => 'log_in'
+  get 'log_out' => 'sessions#destroy', :as => 'log_out'
+  resources :sessions
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
