@@ -1,25 +1,24 @@
-<h1>Listing blog_posts</h1>
+<%= link_to 'Write a new post', new_post_path %>
+<% @blog_posts.each do |post| %>
+  <div class="post_section">
+    <div class="post_title">
+      <h2><%= post.title %></h2>
+    </div>
 
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Body</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+    <div class="post_content">
+      <p><%= post.body %></p>
+    </div>
 
-<% @blog_posts.each do |blog_post| %>
-  <tr>
-    <td><%= blog_post.title %></td>
-    <td><%= blog_post.body %></td>
-    <td><%= link_to 'Show', blog_post %></td>
-    <td><%= link_to 'Edit', edit_blog_post_path(blog_post) %></td>
-    <td><%= link_to 'Destroy', blog_post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
+    <div class="post_data">
+      <%= link_to 'Read whole post', post %>  |
+      <%= link_to 'Edit', edit_blog_post_path(post) %>  |
+      <%= link_to 'Delete', :method => post, data: { confirm: 'Are you sure?' } %>
+      <br/>
+      &gt; December 28, 2048 | <strong>Author:</strong> John | <strong>Category:</strong> <a href="#">Freebies</a>
+    </div>
+
+    <div class="post_likes">
+      <span><%= post.likes %></span>
+    </div>
+  </div>
 <% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Blog post', new_blog_post_path %>

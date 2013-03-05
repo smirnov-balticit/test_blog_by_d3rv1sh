@@ -1,8 +1,12 @@
 RubyBlog::Application.routes.draw do
   root :to  => 'blog_posts#index'
+
+  get 'new_post' => 'blog_posts#new', :as => 'new_post'
   resources :blog_posts
 
-  get 'sign_up' => 'users#new', :as => 'sign_up'
+  get 'sign_up' => 'users#new',   :as => 'sign_up'
+  get 'authors' => 'users#index', :as => 'authors'
+  get 'profile' => 'users#show',  :as => 'profile'
   resources :users
 
   get 'log_in'  => 'sessions#new', :as => 'log_in'
