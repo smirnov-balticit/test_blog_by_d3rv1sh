@@ -32,12 +32,9 @@
       <div id="sidebar">
         <h4>Categories</h4>
         <ul class="list">
-          <li><a href="#">For good mood</a></li>
-          <li><a href="#">Funny ruby stuff</a></li>
-          <li><a href="#">Rails framework</a></li>
-          <li><a href="#">Video and audio</a></li>
-          <li><a href="#">Making things going</a></li>
-          <li><a href="#">How to...</a></li>
+          <% categories.each do |category| %>
+            <li><%= link_to category.name, posts_path(:category_id => category.id) %></a></li>
+          <% end %>
         </ul>
       </div>
       <div class="clear"></div>
