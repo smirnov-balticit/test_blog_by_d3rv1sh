@@ -53,8 +53,8 @@ class BlogPostsController < ApplicationController
 
   def like
     @result = 0
-    if @blog_post.owner != current_user
-      blog_post = BlogPost.find(params[:id])
+    blog_post = BlogPost.find(params[:id])
+    if blog_post.owner != current_user
       blog_post.likes += 1
       blog_post.save
       @result = 1

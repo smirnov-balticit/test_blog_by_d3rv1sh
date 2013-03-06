@@ -39,4 +39,25 @@ $(document).ready(function() {
         login_form.css('display', 'none');
         $(this).hide();
     });
+
+    $(".post_likes").click(
+        function() {
+            var id = $(this).attr('id');
+            var post_id = id.split('_for_', 2)[1];
+            var likes = $(this).find('span').text();
+
+            $.post(
+                "/like_post",
+                {
+                    //beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+                    id: post_id
+                },
+                onAjaxSuccess
+            );
+
+            function onAjaxSuccess(data) {
+                $('#' + id).find('span').text( (parseInt(likes) + 1).toString() );
+            }
+        }
+    )
 });

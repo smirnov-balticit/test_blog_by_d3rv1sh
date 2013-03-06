@@ -1,12 +1,12 @@
 RubyBlog::Application.routes.draw do
   root :to  => 'blog_posts#index'
 
-  get 'post'      => 'blog_posts#show',    :as => 'post'
-  get 'posts'     => 'blog_posts#index',   :as => 'posts'
-  get 'new_post'  => 'blog_posts#new',     :as => 'new_post'
-  get 'edit_post' => 'blog_posts#edit',    :as => 'edit_post'
-  get 'del_post'  => 'blog_posts#destroy', :as => 'del_post'
-  get 'like_post' => 'blog_posts#like',    :as => 'like_post'
+  get  'post'      => 'blog_posts#show',    :as => 'post'
+  get  'posts'     => 'blog_posts#index',   :as => 'posts'
+  get  'new_post'  => 'blog_posts#new',     :as => 'new_post'
+  get  'edit_post' => 'blog_posts#edit',    :as => 'edit_post'
+  get  'del_post'  => 'blog_posts#destroy', :as => 'del_post'
+  post 'like_post' => 'blog_posts#like',    :as => 'like_post'
   resources :blog_posts
 
   get 'sign_up' => 'users#new',   :as => 'sign_up'
