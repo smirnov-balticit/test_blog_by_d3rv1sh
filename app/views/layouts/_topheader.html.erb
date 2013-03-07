@@ -16,7 +16,7 @@
     </ul>
     <ul>
       <li><%= link_to 'Authors', authors_path, :id => 'header_menu_authors' %></li>
-      <li><%= link_to 'About Us', log_in_path, :id => 'header_menu_help' %></li>
+      <li><%= link_to 'About Us', '#', :id => 'header_menu_help' %></li>
 
       <% if !current_user %>
           <li><%= link_to 'Login', '#', :id => 'header_menu_sign_in' %></li>
