@@ -20,4 +20,13 @@ class UsersController < ApplicationController
   def show
     @user = User.find(current_user)
   end
+
+  def set_name
+    @user = User.find(current_user)
+    if @user.update_attributes(params[:user])
+      redirect_to @user, notice: 'Name was successfully updated. Check it out.'
+    else
+      render action: 'show'
+    end
+  end
 end

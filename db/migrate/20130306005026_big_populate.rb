@@ -8,8 +8,8 @@ class BigPopulate < ActiveRecord::Migration
     user_bella   = User.create :email => 'bella@rubyblog.com',
                                :password => 'bella123'
 
-    user_dervish = User.create :email => 'dervish@rubyblog.com',
-                               :password => 'dervish123'
+    user_fedor   = User.create :email => 'fedor@rubyblog.com',
+                               :password => 'fedor123'
 
     # Categories
     cat_mood =  Category.create :name => 'For good mood'
@@ -20,7 +20,7 @@ class BigPopulate < ActiveRecord::Migration
     cat_div42 = Category.create :name => 'How to divide 42 by 0'
 
     # Posts
-    BlogPost.create :title => 'Why Ruby-skilled girls are hot in bed',
+    BlogPost.create :title => 'Why Ruby-skilled girls are hot',
                     :body  => 'Ruby is really fancy programming language.
                                So fancy like something able to make every girl more sexy.
                                Also Ruby is the great option as tale before midnight.',
@@ -38,7 +38,7 @@ class BigPopulate < ActiveRecord::Migration
 
     BlogPost.create :title => 'Lorem ipsum',
                     :body  => 'This is absolute useless post just as dummy placeholder.',
-                    :owner => user_dervish,
+                    :owner => user_fedor,
                     :category => cat_mood,
                     :likes => 0
   end

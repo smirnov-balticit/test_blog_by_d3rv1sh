@@ -1,5 +1,5 @@
 /* Basic styles */
-body {
+#body_wrapper {
   margin: 0;
   padding: 0;
   color: #666;
@@ -110,14 +110,14 @@ em { color: #5d6d1e; }
   height: 30px;
   padding: 0;
   margin: 20px 5px 0 0 ;
-  font-size: 18px;
+  font-size: 1.5em;
+  font-weight: bold;
   text-align: center;
   text-decoration: none;
-  /*font-weight: bold;*/
   vertical-align: middle;
   outline: none;
   border: none;
-  /*font-variant: small-caps;*/
+  font-variant: small-caps;
   color: #92896F;
 }
 
@@ -339,6 +339,25 @@ em { color: #5d6d1e; }
   text-decoration: none;
 }
 
+.new_post_link_holder {
+  text-align: center;
+  font-variant: small-caps;
+  font-size: 1.3em;
+  margin-top: 5px;
+}
+.new_post_link_holder a {
+  padding: 10px 45px 10px 20px;
+}
+.new_post_link_holder a:hover {
+  background-color: #f1f1f1;
+  color: #6E5000;
+  -webkit-box-shadow: 0 8px 6px -6px #888;
+  -moz-box-shadow: 0 8px 6px -6px #888;
+  box-shadow: 0 8px 6px -6px #888;
+  background: url("pen.png") right no-repeat;
+  border: 3px solid #f5f5f5;
+  text-decoration: underline;
+}
 /* End of  Content right column block*/
 
 /* Help page */
@@ -364,12 +383,20 @@ em { color: #5d6d1e; }
 /* END of Help page */
 
 /* Show post styles */
-.show_post h5 {
-  margin-left: 10px;
+.show_post .post_title{
+  margin: 0;
+}
+.show_post h1 {
+  text-decoration: none;
+  text-align: left;
+  color: #C7A902;
+  font-size: 1.3em;
+  text-shadow: 2px 2px 10px rgba(150, 150, 150, 0.33);
+  background: url("post_title_bg.png") repeat-y;
+  padding: 0;
 }
 
 .show_post .button_holder {
-  margin-left: 15px;
 }
 
 .show_post a{
@@ -380,17 +407,44 @@ em { color: #5d6d1e; }
 /* End of Show post styles */
 
 /* Edit post styles */
+
+.edit_header {
+  height: 22px;
+  width: 410px;
+}
+
+.edit_header h1 {
+  text-decoration: none;
+  text-align: left;
+  color: #C7A902;
+  font-size: 1.3em;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 10px rgba(150, 150, 150, 0.33);
+  float: right;
+  width: 327px;
+  margin: 0;
+  padding: 0;
+}
+.edit_header a{
+  font-size: 1.2em;
+  background-color: #f5f5f5;
+  padding: 5px 10px;
+  width: 60px;
+}
 .edit_post input {
   padding: 5px;
   border: 3px solid #f1f1f1;
   font-size: 1.3em;
+  width: 260px;
 }
 .edit_post input:focus {
   font-weight: bold;
-  width: 470px;
   background-color: #F9F9F9;
 }
 .edit_post textarea {
+  height: 200px;
+  font-size: 1.1em;
+  font-family: "PT Sans", Helvetica, Arial, sans-serif;
   padding: 5px;
   border: 3px solid #f1f1f1;
   width: 470px;
@@ -399,30 +453,158 @@ em { color: #5d6d1e; }
 }
 .edit_post .submit input {
   padding: 6px;
-  color: #999;
-  font-weight: bold;
-  background-color: #f5f5f5;
+  color: #D50000;
+  width: 90px;
+  background-color: #fff;
   cursor: pointer;
   float: right;
+  font-variant: small-caps;
+  margin-right: 4px;
+  margin-top: -8px;
 }
 .edit_post .submit input:hover {
-  padding: 6px;
-  color: #EAC377;
-  font-weight: bold;
+  color: #6E5000;
   background-color: #f9f9f9;
   cursor: pointer;
   float: right;
+  background-color: #f1f1f1;
+  color: #6E5000;
+  -webkit-box-shadow: 0 8px 6px -6px #888;
+  -moz-box-shadow: 0 8px 6px -6px #888;
+  box-shadow: 0 8px 6px -6px #888;
+  border: 3px solid #f5f5f5;
+  text-decoration: underline;
 }
 
-
-.edit_post a{
+.edit_category_holder {
+  float: right;
+}
+.edit_category_holder select {
+  width: 205px;
+  padding: 5px;
+  border: 3px solid #f1f1f1;
   font-size: 1.2em;
-  background-color: #f5f5f5;
-  padding: 5px 10px;
+  margin-right: 4px;
 }
 
+.edit_post select:focus {
+  font-weight: bold;
+  background-color: #F9F9F9;
+}
+#notice h2{
+  color: #FFA200;
+  font-size: 1.5em;
+  text-shadow: 2px 2px 10px rgba(150, 150, 150, 0.33);
+}
 
 /* End of edit post styles */
+
+/* Users styles */
+#signup_holder {
+  text-align: center;
+  width: 365px;
+  margin: 20px auto 0 auto;
+  font-size: 1.2em;
+  height: 190px;
+  border: 3px solid #ddd;
+  padding-top: 10px;
+  background: url("post_title_bg.png") -50px -50px repeat-y;
+  -webkit-box-shadow: 5px 0px 16px rgba(50, 50, 50, 0.28);
+  -moz-box-shadow:    5px 0px 16px rgba(50, 50, 50, 0.28);
+  box-shadow:         5px 0px 16px rgba(50, 50, 50, 0.28);
+}
+#signup_holder h2 {
+  margin-bottom: 15px;
+  text-shadow: 2px 2px 10px rgba(150, 150, 150, 0.33);
+}
+#signup_labels {
+  text-align: left;
+  float: left;
+}
+#signup_labels div{
+  height: 26px;
+  padding: 6px 0 0 10px;
+  width: 140px;
+  background-color: #e7e7e7;
+  border-right: 3px solid #f1f1f1 ;
+}
+#signup_forms div{
+  height: 30px;
+
+}
+#signup_forms {
+  float: right;
+  border: 3px solid #f5f5f5;
+  background-color: #f5f5f5;
+
+}
+#signup_forms input {
+  border: 3px solid #f5f5f5;
+  font-size: 1.1em;
+  width: 200px;
+}
+#create_user_button input {
+  font-size: 1.1em;
+  padding: 6px;
+  color: #D50000;
+  background-color: #fff;
+  cursor: pointer;
+  float: right;
+  font-variant: small-caps;
+  margin-right: 4px;
+  margin-top: 10px;
+}
+#create_user_button input:hover {
+  color: #6E5000;
+  cursor: pointer;
+  float: right;
+  color: #6E5000;
+  border: 3px solid #f5f5f5;
+  text-decoration: underline;
+  border: 2px solid #C7A902;
+}
+
+#users_list_holder {
+  width: 489px;
+  margin: 20px auto 0 auto;
+  text-align: center;
+  display: table;
+  border: 3px solid #ddd;
+  -webkit-box-shadow: 5px 0px 16px rgba(50, 50, 50, 0.28);
+  -moz-box-shadow:    5px 0px 16px rgba(50, 50, 50, 0.28);
+  box-shadow:         5px 0px 16px rgba(50, 50, 50, 0.28);
+
+}
+#users_list_title {
+  width: 100%;
+  background-color: #eee;
+}
+#users_list_title div{
+  width: 163px;
+  display: table-cell;
+  height: 25px;
+  border-bottom: 3px solid #ddd;
+  font-size: 1.5em;
+  padding-top: 7px;
+  color: #C7A902;
+  background-color: #eee;
+  font-variant: small-caps;
+  font-weight: bold;
+}
+.single_user_data div{
+  font-size: 1em;
+  width: 160px;
+  display: table-cell;
+  height: 40px;
+  border: 3px solid #f6f6f6;
+  vertical-align: middle;
+  font-weight: bold;
+}
+.single_user_data.even{
+  background-color: #f1f1f1;
+}
+
+/* END of users styles */
 
 /* Footer */
 #footer {

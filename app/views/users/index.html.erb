@@ -1,5 +1,45 @@
-<% @users.each do |user| %>
-  <div>
-    <%= user.email %>
+<% @odd = true %>
+<div id="users_list_holder">
+  <div id="users_list_title">
+    <div>
+      Name
+    </div>
+    <div>
+      Surname
+    </div>
+    <div>
+      e-Mail adress
+    </div>
   </div>
-<% end %>
+  <% @users.each do |user| %>
+    <% if @odd %>
+      <div class="single_user_data">
+      <%  @odd = false   %>
+    <% else %>
+      <div class="single_user_data even">
+      <% @odd = true %>
+    <% end %>
+      <div>
+          <% if user.first_name %>
+            <%= user.first_name %>
+          <% else %>
+            <p>-----</p>
+          <% end %>
+      </div>
+      <div>
+          <% if user.last_name %>
+            <%= user.last_name %>
+          <% else %>
+            <p>-----</p>
+          <% end %>
+      </div>
+      <div>
+          <% if user.email %>
+            <%= user.email %>
+          <% else %>
+            <p>-----</p>
+          <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>

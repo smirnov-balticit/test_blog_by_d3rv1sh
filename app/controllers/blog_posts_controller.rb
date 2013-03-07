@@ -9,6 +9,7 @@ class BlogPostsController < ApplicationController
       @blog_posts = BlogPost.all
       @blog_posts = @blog_posts.sort {|a, b| b.created_at <=> a.created_at}
     end
+    @chapter = "home"
   end
 
   def show
@@ -45,7 +46,7 @@ class BlogPostsController < ApplicationController
     @blog_post.category = Category.find(params[:category_id])
 
     if @blog_post.update_attributes(params[:blog_post])
-      redirect_to @blog_post, notice: 'Blog post was successfully updated.'
+      redirect_to @blog_post, notice: 'Blog post was successfully updated. Check it out.'
     else
       render action: 'edit'
     end

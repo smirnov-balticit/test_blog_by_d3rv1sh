@@ -9,14 +9,14 @@
       <li><%= link_to 'Home',    root_path, :id => 'header_menu_home'    %></li>
 
       <% if current_user %>
-        <li><%= link_to 'My Profile', profile_path, :id => 'header_menu_profile' %></li>
+        <li><%= link_to 'My profile', profile_path, :id => 'header_menu_profile' %></li>
       <% else %>
-        <li><%= link_to 'Sign Up', sign_up_path, :id => 'header_menu_sign_up' %></li>
+        <li><%= link_to 'Sign up', sign_up_path, :id => 'header_menu_sign_up' %></li>
       <% end %>
     </ul>
     <ul>
       <li><%= link_to 'Authors', authors_path, :id => 'header_menu_authors' %></li>
-      <li><%= link_to 'About Us', '#', :id => 'header_menu_help' %></li>
+      <li><%= link_to 'About us', 'http://www.ruby-lang.org/en/about/', :id => 'header_menu_help' %></li>
 
       <% if !current_user %>
           <li><%= link_to 'Login', '#', :id => 'header_menu_sign_in' %></li>

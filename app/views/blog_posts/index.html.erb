@@ -1,5 +1,7 @@
 <% if current_user %>
-  <%= link_to 'Write a new post', new_post_path %>
+  <div class="new_post_link_holder">
+    <%= link_to 'Write a new post', new_post_path %>
+  </div>
 <% end %>
 <% @blog_posts.each do |post| %>
   <div class="post_section">
@@ -21,7 +23,12 @@
       <br/>
       &gt; <%= post.created_at.to_time.strftime('%B %e at %l:%M %p') %> |
       <strong>Author:</strong>
-        <%= post.owner.email %> |
+        <% if post.owner.first_name %>
+          <%= post.owner.first_name %>
+        <% else %>
+          <%= post.owner.email %>
+        <% end %>
+         |
       <strong>Category:</strong>
       <%= link_to post.category.name, posts_path(:category_id => post.category.id) %>
     </div>

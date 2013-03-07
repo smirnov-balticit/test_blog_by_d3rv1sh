@@ -1,12 +1,16 @@
-<p id="notice"><%= notice %></p>
+<div id="notice">
+  <h2><%= notice %></p>
+</div>
+
 
 <div class="show_post">
-  <h5> <%= @blog_post.title %> </h5>
+  <div class="post_title">
+    <h1> <%= @blog_post.title %> </h1>
+  </div>
   <div class="post_content">
     <p><%= @blog_post.body %></p>
   </div>
   <div class="button_holder">
-    <%= link_to 'Edit', edit_blog_post_path(@blog_post) %>
-    <%= link_to 'Back', blog_posts_path %>
+    <%= link_to '← Home', blog_posts_path %><%= link_to 'Edit →', edit_blog_post_path(@blog_post) %>
   </div>
 </div>

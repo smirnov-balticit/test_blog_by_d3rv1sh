@@ -60,4 +60,56 @@ $(document).ready(function() {
             }
         }
     )
+
+    // Sample text for new post fields (on click and on blur)
+    var post_title = $('#blog_post_title');
+    var default_title = '> Please, enter the title here...'
+    var blog_post_body = $('#blog_post_body');
+    var default_body = '...Type your post here...'
+
+    if (post_title.val()=='') {
+        post_title.val(default_title);
+        post_title.css('font-style', 'italic');
+    }
+
+    post_title.focus(
+        function() {
+            if($(this).val()== default_title){
+                $(this).val('');
+            }
+            post_title.css('font-style', 'normal');
+        }
+    )
+
+    post_title.blur(
+        function() {
+            if($(this).val()==''){
+                $(this).val(default_title);
+                $('#blog_post_title').css('font-style', 'italic');
+            }
+        }
+    )
+
+    if (blog_post_body.val()=='') {
+        blog_post_body.val(default_body);
+        blog_post_body.css('font-style', 'italic');
+    }
+
+    blog_post_body.focus(
+        function() {
+            if($(this).val()== default_body){
+                $(this).val('');
+            }
+            blog_post_body.css('font-style', 'normal');
+        }
+    )
+
+    blog_post_body.blur(
+        function() {
+            if($(this).val()==''){
+                $(this).val(default_body);
+                $('#blog_post_title').css('font-style', 'italic');
+            }
+        }
+    )
 });

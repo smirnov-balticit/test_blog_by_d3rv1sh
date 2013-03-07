@@ -9,13 +9,15 @@ RubyBlog::Application.routes.draw do
   post 'like_post' => 'blog_posts#like',    :as => 'like_post'
   resources :blog_posts
 
-  get 'sign_up' => 'users#new',   :as => 'sign_up'
-  get 'authors' => 'users#index', :as => 'authors'
-  get 'profile' => 'users#show',  :as => 'profile'
+  get  'sign_up' => 'users#new',   :as => 'sign_up'
+  get  'authors' => 'users#index', :as => 'authors'
+  get  'profile' => 'users#show',  :as => 'profile'
+  post 'set_name' => 'users#set_name', :as => 'set_name'
+  put  'set_name' => 'users#set_name', :as => 'set_name'
   resources :users
 
-  get 'log_in'  => 'sessions#new',     :as => 'log_in'
-  get 'log_out' => 'sessions#destroy', :as => 'log_out'
+  get  'log_in'   => 'sessions#new',     :as => 'log_in'
+  get  'log_out'  => 'sessions#destroy', :as => 'log_out'
   resources :sessions
 
 end
