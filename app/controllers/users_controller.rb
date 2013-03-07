@@ -2,10 +2,12 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
+    @chapter = 'authors'
   end
 
   def new
     @user = User.new
+    @chapter = 'sign_up'
   end
 
   def create
@@ -19,6 +21,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(current_user)
+    @chapter = 'profile'
   end
 
   def set_name
