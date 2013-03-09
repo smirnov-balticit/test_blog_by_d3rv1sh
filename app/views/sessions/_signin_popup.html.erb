@@ -1,0 +1,15 @@
+<div id="overlay_signup">
+</div>
+<div id="sign_form">
+  <%= form_tag sessions_path do %>
+    <strong><%= label_tag :email %></strong><br/>
+    <%= text_field_tag :email, params[:email] %><br/>
+
+    <strong><%= label_tag :password %></strong><br/>
+    <%= password_field_tag :password %><br/>
+
+      <input type="submit" value="Enter" class="enter_button">
+  <% end %>
+
+  <%= image_tag('sign_form_triangle.png') %>
+</div>

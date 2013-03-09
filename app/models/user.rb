@@ -1,7 +1,15 @@
 class User < ActiveRecord::Base
   attr_accessible :email,
                   :password,
-                  :password_confirmation
+                  :password_confirmation,
+                  :first_name,
+                  :last_name
+
+  #attr_accessor :first_name
+  #before_save :set_default_first_name
+  #
+  #attr_accessor :last_name
+  #before_save :set_default_last_name
 
   attr_accessor :password
   before_save :encrypt_password
@@ -26,4 +34,16 @@ class User < ActiveRecord::Base
       self.password_hash = BCrypt::Engine.hash_secret(password, password_salt)
     end
   end
+
+  #def set_default_first_name
+  #  if !(self.first_name)
+  #    self.first_name = 'Mr.'
+  #  end
+  #end
+  #
+  #def set_default_last_name
+  #  if !(self.last_name)
+  #    self.last_name  = self.email
+  #  end
+  #end
 end

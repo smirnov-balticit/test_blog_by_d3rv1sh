@@ -1,7 +1,7 @@
 <%= form_for(@blog_post) do |f| %>
   <% if @blog_post.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@blog_post.errors.count, "error") %> prohibited this blog_post from being saved:</h2>
+      <h2><%= pluralize(@blog_post.errors.count, 'error') %> prohibited this blog_post from being saved:</h2>
 
       <ul>
       <% @blog_post.errors.full_messages.each do |msg| %>
@@ -11,15 +11,18 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_area :title %>
-  </div>
-  <div class="field">
-    <%= f.label :body %><br />
+
+  <div class="edit_post" >
+    <%= f.text_field :title  %>
+    <div class="edit_category_holder">
+      <% categories_array = categories.map { |category| [category.name, category.id] } %>
+      <% category = 1 %>
+      <% categories_options = options_for_select(categories_array, category) %>
+      <%= select_tag :category_id, categories_options %>
+    </div>
     <%= f.text_area :body %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+    <div class="submit">
+        <%= f.submit "Send"%>
+    </div>
   </div>
 <% end %>

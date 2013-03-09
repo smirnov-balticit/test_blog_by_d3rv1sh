@@ -1,28 +1,85 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>RubyBlog</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+  <meta charset="utf-8"/>
+  <meta name="keywords" content="Blog about Ruby on Rails" />
+  <meta name="description" content="Just another blog about Ruby on Rails" />
+  <%= csrf_meta_tag %>
 
-<div id="user_nav">
-  <% if current_user %>
-    Logged in as <%=  current_user.email %>.
-    <%= link_to 'Log out', log_out_path %>
-  <% else %>
-    <%= link_to 'Sign up', sign_up_path %> or
-    <%= link_to 'log in', log_in_path %>.
+  <%= stylesheet_link_tag 'application', :media => 'all' %>
+  <%= javascript_include_tag 'application' %>
+
+  <title>Blog about Ruby on Rails</title>
+</head>
+
+<body>
+<div id="body_wrapper"> <!-- global wrapper -->
+
+<%= render :partial => 'layouts/topheader' %>
+
+<div id="outside_wrapper">
+
+  <% if !current_user %>
+      <%= render :partial => 'sessions/signin_popup' %>
   <% end %>
+
+  <!-- image on top -->
+  <%= image_tag 'ruby.png', :class => 'ruby' %>
+
+  <div id="wrapper">
+    <!-- Left side column -->
+    <div id="left_column">
+      <%= render :partial => 'layouts/textlogo' %>
+
+      <!-- Side menu -->
+      <div id="sidebar">
+        <h4>Categories</h4>
+        <ul class="list">
+          <% categories.each do |category| %>
+            <li><%= link_to category.name, posts_path(:category_id => category.id) %></li>
+          <% end %>
+        </ul>
+      </div>
+      <div class="clear"></div>
+    </div>
+
+    <!-- Slider block if necessary -->
+    <% if !@hide_slider %>
+        <%= render(:partial => 'layouts/slider') %>
+    <% end %>
+
+    <!-- Content column -->
+    <div id="right_column_wrapper">
+
+      <!-- Posts block -->
+      <div id="right_column">
+
+        <%= yield %>
+
+        <!-- RSS feed block -->
+        <div id="rss">
+          <a href="#">SUBSCRIBE NOW <br /><span>to our RSS feed</span></a>
+        </div>
+
+      </div> <!-- End of Posts block-->
+
+      <div class="clear"></div>
+
+    </div> <!-- End of content section-->
+
+    <div class="clear"></div>
+
+    <!-- Footer -->
+    <div id="footer">
+      <p>The Ruby License is the <a href="http://en.wikipedia.org/wiki/Free_software_licence">free software licence </a> applied to the <a href="http://www.ruby-lang.org">Ruby programming language</a> and also available to be used in other projects.</p>
+    </div>
+    <div class="clear"></div>
+
+  </div>
+  <!-- END: wrapper -->
 </div>
 
-<% flash.each do |name, msg| %>
-  <%= content_tag :div, msg, :id => "flash_#{name}" %>
-<% end %>
-
-<%= yield %>
-
+</div>  <!-- END: body wrapper -->
 </body>
 </html>
+

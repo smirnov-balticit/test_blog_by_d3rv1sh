@@ -1,83 +1,75 @@
 class BlogPostsController < ApplicationController
-  # GET /blog_posts
-  # GET /blog_posts.json
-  def index
-    @blog_posts = BlogPost.all
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @blog_posts }
+  def index
+    cat_id = params[:category_id]
+    if cat_id
+      @blog_posts = BlogPost.where('category_id = ? ', cat_id)
+      @blog_posts = @blog_posts.sort {|a, b| b.created_at <=> a.created_at}
+    else
+      @blog_posts = BlogPost.all
+      @blog_posts = @blog_posts.sort {|a, b| b.created_at <=> a.created_at}
     end
+    @chapter = "home"
   end
 
-  # GET /blog_posts/1
-  # GET /blog_posts/1.json
   def show
     @blog_post = BlogPost.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @blog_post }
-    end
   end
 
-  # GET /blog_posts/new
-  # GET /blog_posts/new.json
   def new
     @blog_post = BlogPost.new
+  end
 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @blog_post }
+  def create
+    @blog_post = BlogPost.new(params[:blog_post])
+    @blog_post.owner = current_user
+    @blog_post.category = Category.find(params[:category_id])
+    @blog_post.likes = 0
+
+    if current_user && @blog_post.save
+      redirect_to @blog_post, notice: 'Blog post was successfully created.'
+    else
+      render action: 'new'
     end
   end
 
-  # GET /blog_posts/1/edit
   def edit
     @blog_post = BlogPost.find(params[:id])
   end
 
-  # POST /blog_posts
-  # POST /blog_posts.json
-  def create
-    @blog_post = BlogPost.new(params[:blog_post])
-
-    respond_to do |format|
-      if @blog_post.save
-        format.html { redirect_to @blog_post, notice: 'Blog post was successfully created.' }
-        format.json { render json: @blog_post, status: :created, location: @blog_post }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @blog_post.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # PUT /blog_posts/1
-  # PUT /blog_posts/1.json
   def update
     @blog_post = BlogPost.find(params[:id])
+    if @blog_post.owner != current_user
+      redirect_to posts_url, notice: 'Security violation'
+      return
+    end
+    @blog_post.category = Category.find(params[:category_id])
 
-    respond_to do |format|
-      if @blog_post.update_attributes(params[:blog_post])
-        format.html { redirect_to @blog_post, notice: 'Blog post was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @blog_post.errors, status: :unprocessable_entity }
-      end
+    if @blog_post.update_attributes(params[:blog_post])
+      redirect_to @blog_post, notice: 'Blog post was successfully updated. Check it out.'
+    else
+      render action: 'edit'
     end
   end
 
-  # DELETE /blog_posts/1
-  # DELETE /blog_posts/1.json
+  def like
+    @result = 0
+    blog_post = BlogPost.find(params[:id])
+    if blog_post.owner != current_user
+      blog_post.likes += 1
+      blog_post.save
+      @result = 1
+    end
+    render :file => 'blog_posts/like.json.erb', :content_type => 'application/json'
+  end
+
   def destroy
     @blog_post = BlogPost.find(params[:id])
-    @blog_post.destroy
-
-    respond_to do |format|
-      format.html { redirect_to blog_posts_url }
-      format.json { head :no_content }
+    if @blog_post.owner != current_user
+      redirect_to posts_url, notice: 'Security violation'
+      return
     end
+    @blog_post.destroy
+    redirect_to posts_url
   end
 end

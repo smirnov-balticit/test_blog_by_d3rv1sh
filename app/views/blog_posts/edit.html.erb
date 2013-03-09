@@ -1,6 +1,8 @@
-<h1>Editing blog_post</h1>
+<div class="edit_header">
+  <h1>Edit this post</h1>
+  <%= link_to '← Home', blog_posts_path %>
+</div>
+<div class="edit_post">
+  <%= render 'form' %>
+</div>
 
-<%= render 'form' %>
-
-<%= link_to 'Show', @blog_post %> |
-<%= link_to 'Back', blog_posts_path %>

@@ -1,0 +1,28 @@
+<div id="signup_holder">
+  <h2>Edit your new account</h2>
+  <%= form_for @user, :url => set_name_url do |f| %>
+      <% if @user.errors.any? %>
+          <div class="error_messages">
+            <h2>Form is invalid</h2>
+            <ul>
+              <% for message in @user.errors.full_messages %>
+                  <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+      <% end %>
+      <div id="signup_labels">
+        <div><%= f.label :first_name, "First Name" %><br/></div>
+        <div><%= f.label :last_name, "Last Name" %><br/>  </div>
+        <div><%= f.label :email, "Your e-mail" %><br/>  </div>
+      </div>
+      <div id="signup_forms">
+        <div><%= f.text_field :first_name %><br/></div>
+        <div><%= f.text_field :last_name %><br/></div>
+        <div><%= f.text_field :email %><br/></div>
+      </div>
+      <div id="create_user_button"><%= f.submit "Change" %></div>
+  <% end %>
+</div>
+
+
